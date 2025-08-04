@@ -31,7 +31,7 @@ const MatchCard: React.FC<{ match: Match }> = ({ match }) => (
     <div className="flex items-center justify-center gap-2 mb-2">
       {match.homeBadge && (
         <img
-          src={`https://streamed.su/api/images/badge/${match.homeBadge}.webp`}
+          src={`https://streami.su/api/images/badge/${match.homeBadge}.webp`}
           alt={match.homeTeam}
           className="w-8 h-8 rounded-full"
         />
@@ -41,7 +41,7 @@ const MatchCard: React.FC<{ match: Match }> = ({ match }) => (
       <span>{match.awayTeam}</span>
       {match.awayBadge && (
         <img
-          src={`https://streamed.su/api/images/badge/${match.awayBadge}.webp`}
+          src={`https://streami.su/api/images/badge/${match.awayBadge}.webp`}
           alt={match.awayTeam}
           className="w-8 h-8 rounded-full"
         />
@@ -52,7 +52,7 @@ const MatchCard: React.FC<{ match: Match }> = ({ match }) => (
     </div>
     {match.poster && match.homeBadge && match.awayBadge && (
       <img
-        src={`https://streamed.su/api/images/poster/${match.homeBadge}/${match.awayBadge}.webp`}
+        src={`https://streami.su/api/images/poster/${match.homeBadge}/${match.awayBadge}.webp`}
         alt={match.title}
         className="w-full rounded-lg mb-2"
       />
@@ -84,10 +84,10 @@ const MatchList: React.FC = () => {
       setError('');
       try {
         // Determine API URL based on filter
-        let url = 'https://streamed.su/api/matches/football';
-        if (filter === 'live') url = 'https://streamed.su/api/matches/live';
+        let url = 'https://streami.su/api/matches/football';
+        if (filter === 'live') url = 'https://streami.su/api/matches/live';
         if (filter === 'popular')
-          url = 'https://streamed.su/api/matches/football/popular';
+          url = 'https://streami.su/api/matches/football/popular';
 
         const response = await fetch(url);
         const data = await response.json();
@@ -101,7 +101,7 @@ const MatchList: React.FC = () => {
               try {
                 const s = match.sources[0];
                 const streamRes = await fetch(
-                  `https://streamed.su/api/stream/${s.source}/${s.id}`
+                  `https://streami.su/api/stream/${s.source}/${s.id}`
                 );
                 const streams = await streamRes.json();
                 firstStreamEmbedUrl =
@@ -179,3 +179,4 @@ const MatchList: React.FC = () => {
 };
 
 export default MatchList;
+
